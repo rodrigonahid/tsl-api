@@ -1,26 +1,23 @@
-from urllib import request
 from django.http import HttpResponse, JsonResponse
-from django.shortcuts import render
-from django.contrib.auth.models import User
-from rest_framework import routers, serializers, viewsets
+from django.views.decorators.csrf import csrf_exempt
+from rest_framework.parsers import JSONParser
+from authentication.models import Authentication
+from authentication.serializers import AuthenticationSerializer
 
-# Create your views here.
-def register(req):
+@csrf_exempt
+def snippet_list(request):
+    """
+    List all code snippets, or create a new snippet.
+    """
+    if request.method == 'GET':
+        snippets = Snippet.objects.all()
+        serializer = SnippetSerializer(snippets, many=True)
+        return JsonResponse(serializer.data, safe=False)
 
-  if req.method == "POST":
-    username = req.POST["username"]
-    email = req.POST["email"]
-    password = req.POST["password"]
-    name = req.POST["name"]
-
-    myuser = User.objects.create_user(username, email, password)
-    myuser.name = name
-    myuser.save()
-
-  return JsonResponse({"req": "req"})
-
-def login(req):
-  return render(req, "authentication/login.html")
-
-def logout(req):
-  return render(req, "authentication/logout.html")
+    elif request.method == 'POST':
+        data = JSONParser().parse(request)
+        serializer = SnippetSerializer(data=data)
+        if serializer.is_valid():
+            serializer.save()
+            return JsonResponse(serializer.data, status=201)
+        return JsonResponse(serializer.errors, status=400)
