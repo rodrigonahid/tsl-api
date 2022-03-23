@@ -11,8 +11,13 @@ Features:
 
 Go to the root folder (same directory as `manage.py`)
 
+`python3 -m venv env` to create the environmnent
+
 If you are on Windows: `venv\Scripts\activate`
 if your are on MacOS or Linux: `source venv/bin/activate`
+
+After sourcing the venv, pip install the dependencies:
+`pip install -r requirement_file.txt`
 
 ## Run development server
 
