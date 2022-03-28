@@ -1,5 +1,6 @@
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
+from rest_framework.status import HTTP_404_NOT_FOUND
 
 from .models import Post
 from .serializers import PostSerializer
@@ -12,7 +13,10 @@ def post_list(request):
   return Response(postSerialized.data)
 
 @api_view()
-def post_detail(request, title):
-  post = Post.objects.all().filter(title="teste")
-  postSerialized = PostSerializer(post, many=False)
-  return Response(postSerialized.data)
+def post_detail(request, pk):
+  post = Post.objects.filter(pk=pk).first()
+  if post:
+    postSerialized = PostSerializer(post)
+    return Response(postSerialized.data)
+  else:
+    return Response({"details": "Not found"}, status=HTTP_404_NOT_FOUND)
