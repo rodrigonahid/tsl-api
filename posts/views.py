@@ -3,11 +3,13 @@ from rest_framework.response import Response
 from rest_framework.decorators import api_view
 from rest_framework import status
 from rest_framework.views import APIView
+from rest_framework.permissions import IsAuthenticatedOrReadOnly
 
 from .models import Post
 from .serializers import PostSerializer
 
 class PostList(APIView):
+  permission_classes = [IsAuthenticatedOrReadOnly]
   def get(self, request):
     post = Post.objects.all()
     postSerialized = PostSerializer(post, many=True)
