@@ -24,6 +24,16 @@ class RegistrationSerializer(serializers.ModelSerializer):
         # or response, including fields specified explicitly above.
         fields = ['email', 'username', 'password', 'token']
 
+    def validate(self, attrs):
+      username = attrs.get('username', )
+
+      if not username.isalnum():
+        raise serializers.ValidationError(
+          "The username should only contain alphanumeric characters"
+        )
+      return attrs
+
+
     def create(self, validated_data):
         # Use the `create_user` method we wrote earlier to create a new user.
         return User.objects.create_user(**validated_data)

@@ -69,7 +69,7 @@ SIMPLE_JWT = {
     'ACCESS_TOKEN_LIFETIME': timedelta(minutes=30),
     'REFRESH_TOKEN_LIFETIME': timedelta(days=1),
     'BLACKLIST_AFTER_ROTATION': False,
-    'SIGNING_KEY': "SECRET_KEY",
+    'SIGNING_KEY': SECRET_KEY,
     'AUTH_HEADER_TYPES': ('Bearer',),
 }
 
@@ -151,7 +151,8 @@ AUTH_USER_MODEL = 'users.User'
 
 # Enable email functionality
 EMAIL_USES_TLS=True
+EMAIL_USE_SSL=True
 EMAIL_HOST='smtp.gmail.com'
-EMAIL_PORT=587
+EMAIL_PORT=465
 EMAIL_HOST_USER=env('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD=env('EMAIL_HOST_PASSWORD')
