@@ -46,8 +46,6 @@ class RegistrationView(APIView):
 
         email.send()
 
-        print(token)
-
         return Response({"message": "Account created, check your email"}, status=status.HTTP_201_CREATED)
 
 class VerifyEmail(generics.GenericAPIView):
@@ -56,7 +54,6 @@ class VerifyEmail(generics.GenericAPIView):
         
         try:
             payload = jwt.decode(jwt=token, key=settings.SECRET_KEY, algorithms='HS256')
-            print('payload', str(payload))
             user = User.objects.get(id = payload['user_id'])
             
             if not user.is_active:
@@ -66,8 +63,6 @@ class VerifyEmail(generics.GenericAPIView):
             return Response({"message": "Account activated"}, status=status.HTTP_200_OK)
 
         except jwt.ExpiredSignatureError as e:
-            # print(e)
             return Response({'error': 'Activations link expired'}, status=status.HTTP_400_BAD_REQUEST)
         except jwt.exceptions.DecodeError as e:
-            print(e)
             return Response({'error': 'Invalid Token'}, status=status.HTTP_400_BAD_REQUEST)
