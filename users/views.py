@@ -5,7 +5,6 @@ from rest_framework.views import APIView
 
 from .serializers import RegistrationSerializer
 
-
 class RegistrationAPIView(APIView):
     # Allow any user (authenticated or not) to hit this endpoint.
     permission_classes = (AllowAny,)
