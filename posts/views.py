@@ -12,8 +12,7 @@ from .serializers import PostSerializer
 class PostList(APIView):
   permission_classes = [IsAuthenticatedOrReadOnly]
   def get(self, request):
-    post = Post.objects.all()
-    print(post)
+    post = Post.objects.all().order_by('-created_at')
     postSerialized = PostSerializer(post, many=True)
     return Response(postSerialized.data)
 
