@@ -23,7 +23,7 @@ class PostList(APIView):
     print(User.objects.get(email=request.user))
     serializer.save(
       author = request.user,
-      author_username = User.objects.get(email=request.user)
+      author_username = User.objects.get(email=request.user).username
     )
     return Response(
       serializer.validated_data,
