@@ -15,6 +15,8 @@ from pathlib import Path
 from datetime import timedelta
 import environ
 
+
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -33,6 +35,13 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+# Allow all hosts (CORS)
+
+ALLOWED_HOSTS=['*']
+
+# CORS Config
+CORS_ORIGIN_ALLOW_ALL = True
+CORS_ALLOW_CREDENTIALS = False
 
 # Application definition
 
@@ -47,13 +56,14 @@ INSTALLED_APPS = [
     'rest_framework_simplejwt',
     'posts',
     'users',
+    'corsheaders',
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
-    #'django.middleware.csrf.CsrfViewMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
