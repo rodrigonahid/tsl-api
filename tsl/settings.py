@@ -32,7 +32,7 @@ SECRET_KEY = env('SECRET_KEY')
 CLIENT_URL = env('CLIENT_URL')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 # Allow all hosts (CORS)
 
