@@ -12,6 +12,7 @@ from .serializers import RegistrationSerializer
 from .models import User
 
 import jwt
+from django.conf import settings
 
 class RegistrationView(APIView):
     # Allow any user (authenticated or not) to hit this endpoint.
@@ -33,9 +34,8 @@ class RegistrationView(APIView):
         user = User.objects.get(email=serializer.data['email'])
         token = RefreshToken.for_user(user).access_token
 
-        relativeLink = reverse("users:verify-email")
-        currentDomain = get_current_site(request).domain
-        absurl = "http://" + currentDomain + relativeLink + "?token=" + str(token)
+        relativeLink = "/verify-account"
+        absurl = settings.CLIENT_URL + relativeLink + "?token=" + str(token)
 
         data = {
           'email_body': 'Hi,' + user_data['username'] + 'Use the link below to verify your account: \n' + absurl,

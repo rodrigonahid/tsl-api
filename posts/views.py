@@ -19,13 +19,14 @@ class PostList(APIView):
   def post(self, request):
     serializer = PostSerializer(data=request.data)
     serializer.is_valid(raise_exception=True)
-    print(User.objects.get(email=request.user))
+    
     serializer.save(
       author = request.user,
       author_username = User.objects.get(email=request.user).username
     )
+    
     return Response(
-      serializer.validated_data,
+      serializer.data,
       status=status.HTTP_201_CREATED
     )
 
