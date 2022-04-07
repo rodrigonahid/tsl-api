@@ -38,7 +38,7 @@ class RegistrationView(APIView):
         absurl = settings.CLIENT_URL + relativeLink + "?token=" + str(token)
 
         data = {
-          'email_body': 'Hi,' + user_data['username'] + 'Use the link below to verify your account: \n' + absurl,
+          'email_body': 'Hi, ' + user_data['username'] + '! Use the link below to verify your account: \n' + absurl,
           'email_subject': user_data['username'] + ', Activate your Wall App account',
         }
 
