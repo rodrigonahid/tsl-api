@@ -165,3 +165,7 @@ EMAIL_HOST='smtp.gmail.com'
 EMAIL_PORT=465
 EMAIL_HOST_USER=env('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD=env('EMAIL_HOST_PASSWORD')
+
+# Configure Django App for Heroku.
+import django_heroku
+django_heroku.settings(locals())
