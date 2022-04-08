@@ -7,8 +7,11 @@ This project is online on Heroku: https://wall-app-tsl-api.herokuapp.com/posts
 ## Routes
 
 -Register User:  POST `/users/`
+
 -Log in User: POST `/users/token/`
+
 -Make new post: POST `/posts/`
+
 - Get all posts: GET `/posts/`
 
 ## Clone the project
