@@ -52,6 +52,6 @@ class UsersTests(TestCase):
 		token = RefreshToken.for_user(user).access_token
 		
 		response = self.client.get("/users/verify-email/?token=" + str(token))
-		print(response.data)
+		
 		self.assertEqual(response.data['message'], 'Account activated')
 		self.assertEqual(response.status_code, 200)
