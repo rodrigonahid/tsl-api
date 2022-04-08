@@ -29,13 +29,3 @@ class PostList(APIView):
       serializer.data,
       status=status.HTTP_201_CREATED
     )
-
-class PostDetail(APIView):
-  def get(self, pk):
-    post = Post.objects.filter(pk=pk).first()
-    if post:
-      postSerialized = PostSerializer(post)
-      return Response(postSerialized.data)
-    else:
-      return Response({"details": "Not found"}, status=status.HTTP_404_NOT_FOUND)
-  
