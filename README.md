@@ -1,11 +1,8 @@
 # The Silver Logic Assignment
 
-An API built in Python, using Django Framework.
-Features:
+My first API using Django Rest Framework.
 
-- Registration, login and logout
-- The Wall Dashboard (Authed)
-- The Wall Dashboard (As guest)
+This project is online on Heroku: https://wall-app-tsl-api.herokuapp.com/
 
 ## Clone the project
 
