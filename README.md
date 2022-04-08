@@ -7,6 +7,7 @@ This project is online on Heroku: https://wall-app-tsl-api.herokuapp.com/
 ## Clone the project
 
 `git clone https://github.com/rodrigonahid/tsl-api.git`
+Then
 `cd tsl-api`
 
 ## Set Virtual Env
