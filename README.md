@@ -26,13 +26,16 @@ After sourcing the venv, pip install the dependencies:
 
 ## Environment variables (.env)
 
-There's a `.env.example` file at `tsl` directory.
+There's a `.env.example` file at `tsl` directory. (`cd tsl/`)
 
 Rename to just `.env` and add the variables value
 
+Then go back to the root directory (`cd ..`)
+
 ## Migrations
 
-And then run migrations:
+On the root directory, run migrations:
+
 `python manage.py migrate`
 
 ## Run development server
