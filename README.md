@@ -7,10 +7,11 @@ This project is online on Heroku: https://wall-app-tsl-api.herokuapp.com/
 ## Clone the project
 
 `git clone https://github.com/rodrigonahid/tsl-api.git`
+`cd tsl-api`
 
 ## Set Virtual Env
 
-Go to the root folder (same directory as `manage.py`)
+On the root folder (same directory as `manage.py`)
 
 `python3 -m venv env` to create the environment
 
