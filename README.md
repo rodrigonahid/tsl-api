@@ -44,6 +44,10 @@ Run `python manage.py runserver`
 
 The server will be running at `http://127.0.0.1:8000/`
 
+## Enable debbuging
+
+When on development, make sure to set `DEBUG = True` on `/tsl/settings.py`
+
 ## Tests
 
 To run the tests:
